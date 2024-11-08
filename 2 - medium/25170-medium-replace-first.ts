@@ -13,11 +13,17 @@ type cases = [
 
 // ============= Your Code Here =============
 // Первое решение
-type ReplaceFirst<T extends readonly unknown[], S, R, First extends unknown[] = []> = 
+// type ReplaceFirst<T extends readonly unknown[], S, R, First extends unknown[] = []> = 
+//   T extends [infer Head, ...infer Rest]
+//   ? Head extends S
+//     ? [...First, R, ...Rest]
+//     : ReplaceFirst<Rest, S, R, [...First, Head]>
+//   : [...First, ...T]
+
+// Всё время забываю, что можно лучше без аккумулятора
+type ReplaceFirst<T extends readonly unknown[], S, R> =
   T extends [infer Head, ...infer Rest]
   ? Head extends S
-    ? [...First, R, ...Rest]
-    : ReplaceFirst<Rest, S, R, [...First, Head]>
-  : [...First, ...T]
-
-// Всё время забываю, что можно лучше
+    ? [R, ...Rest]
+    : [Head, ...ReplaceFirst<Rest, S, R>]
+  : T
