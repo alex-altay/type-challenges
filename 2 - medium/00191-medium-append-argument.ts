@@ -1,0 +1,28 @@
+// ============= Test Cases =============
+import type { Equal, Expect } from '../test-utils'
+
+type Case1 = AppendArgument<(a: number, b: string) => number, boolean>
+type Result1 = (a: number, b: string, x: boolean) => number
+
+type Case2 = AppendArgument<() => void, undefined>
+type Result2 = (x: undefined) => void
+
+type cases = [
+  Expect<Equal<Case1, Result1>>,
+  Expect<Equal<Case2, Result2>>,
+  // @ts-expect-error
+  AppendArgument<unknown, undefined>,
+]
+
+
+// ============= Your Code Here =============
+type Reverse<A extends any[], T extends any[] = []> = A extends [...infer Head, infer Teil]
+  ? Reverse<Head, [...T, Teil]> 
+  : T
+
+type test = Reverse<['a', 'b', 'c']>
+
+
+type AppendArgument<Fn extends Function, A extends any> = Fn extends ((...args: infer T) => infer U) 
+  ? (...args: [...T, A]) => U
+  : never
