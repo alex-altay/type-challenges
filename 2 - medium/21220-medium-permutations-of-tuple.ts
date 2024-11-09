@@ -1,5 +1,5 @@
 // ============= Test Cases =============
-import type { Equal, Expect, ExpectFalse } from '../test-utils'
+import type { Equal, Expect, ExpectFalse } from './test-utils'
 
 type cases = [
   Expect<Equal<PermutationsOfTuple<[]>, []>>,
@@ -28,4 +28,11 @@ type cases = [
 
 
 // ============= Your Code Here =============
-type PermutationsOfTuple<T extends unknown[]> = any
+type PermutationsOfTuple<T extends unknown[], Counter extends 1[] = []> =
+  T extends []
+  ? []
+  : Counter['length'] extends T['length']
+    ? never
+    : T extends [infer Head, ...infer Tail]
+      ? [Head, ...PermutationsOfTuple<Tail>] | PermutationsOfTuple<[...Tail, Head], [...Counter, 1]>
+      : never
