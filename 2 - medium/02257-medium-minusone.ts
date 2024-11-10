@@ -13,28 +13,61 @@ type cases = [
 
 
 // ============= Your Code Here =============
-type Times<T extends number, Acc extends unknown[] = []> =
-  Acc['length'] extends T
-  ? Acc
-  : Times<T, [...Acc, Acc['length']]>
+// Моё первое решение, которое работает с числами до 1101, упираясь в ограничение на глубину рекурсии
+// type Times<T extends number, Acc extends unknown[] = []> =
+//   Acc['length'] extends T
+//   ? Acc
+//   : Times<T, [...Acc, Acc['length']]>
 
-type Pop<T extends unknown[]> = T extends [infer F, ...infer Rest]
-  ? [...Rest]
+// type Pop<T extends unknown[]> = T extends [infer F, ...infer Rest]
+//   ? [...Rest]
+//   : T
+
+// type MinusOne<T extends number> = 
+//   T extends 0
+//   ? -1
+//   : Pop<Times<T>> extends unknown[]
+//     ? Pop<Times<T>>['length']
+//     : never
+
+
+// Вариант со строками
+
+type Naturals = {
+  '0': '9',
+  '9': '8',
+  '8': '7',
+  '7': '6',
+  '6': '5',
+  '5': '4',
+  '4': '3',
+  '3': '2',
+  '2': '1',
+  '1': '0'
+}
+
+type MinusOne<
+  T extends number, 
+  Reversed extends string = ReverseString<`${T}`>,
+  MinusString extends string = ReverseString<MinusOneString<Reversed>>
+  > = MinusString extends `${infer N extends number}`
+      ? N 
+      : MinusString extends `-${infer N extends number}`
+        ? N
+        : never
+
+type MinusOneString<T extends string> = 
+  T extends `0${infer Rest}`
+  ? Rest extends ""
+    ? '1-' 
+    : Rest extends '1'
+      ? '9'
+      : `9${MinusOneString<Rest>}`
+  : T extends `${infer Head extends keyof Naturals}${infer Rest}`
+    ? `${Naturals[Head]}${Rest}`
+    : ''
+
+type ReverseString<T extends string> = 
+  T extends `${infer Head}${infer Tail}`
+  ? `${ReverseString<Tail>}${Head}`
   : T
-
-
-type MinusOne<T extends number> = 
-  T extends 0
-  ? -1
-  : Pop<Times<T>> extends unknown[]
-    ? Pop<Times<T>>['length']
-    : never
-
-
-type p1 = Pop<[1, 2, 3]>  
-type t2 = MinusOne<1101>
-type t3 = Times<1101>
-
-
-type ToNumber<T> = T extends `${infer R extends number}` ? R : never
-type one = ToNumber<'3'>
