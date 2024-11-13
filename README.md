@@ -8,7 +8,7 @@ Score by now:
 
 Easy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;13 / 13<br/>
 Medium&nbsp;&nbsp;&nbsp;95 / 95<br/>
-Hard&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 / 47<br/>
+Hard&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3 / 47<br/>
 
 You can see and try the challenges here:
 https://github.com/type-challenges/type-challenges/
