@@ -1,5 +1,5 @@
 // ============= Test Cases =============
-import type { Equal, Expect } from './test-utils'
+import type { Equal, Expect } from '../test-utils'
 
 type cases = [
   Expect<Equal<CartesianProduct<1 | 2, 'a' | 'b'>, [2, 'a'] | [1, 'a'] | [2, 'b'] | [1, 'b']>>,

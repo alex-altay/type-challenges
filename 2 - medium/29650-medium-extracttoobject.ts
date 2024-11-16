@@ -1,5 +1,5 @@
 // ============= Test Cases =============
-import type { Equal, Expect } from './test-utils'
+import type { Equal, Expect } from '../test-utils'
 
 type test1 = { id: '1'; myProp: { foo: '2' } }
 

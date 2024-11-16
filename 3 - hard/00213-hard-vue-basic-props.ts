@@ -1,5 +1,5 @@
 // ============= Test Cases =============
-import type { Debug, Equal, Expect, IsAny } from './test-utils'
+import type { Debug, Equal, Expect, IsAny } from '../test-utils'
 
 class ClassA {}
 
