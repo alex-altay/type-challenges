@@ -9,7 +9,7 @@ Score by now:<br/>
 
 Easy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;13 / 13<br/>
 Medium&nbsp;&nbsp;&nbsp;95 / 95<br/>
-Hard&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;41 / 47<br/>
+Hard&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;42 / 47<br/>
 
 At December 14 Type Challenge Team published my challenge - [Defined Partial Record](https://github.com/type-challenges/type-challenges/tree/main/questions/34857-medium-defined-partial-record). Give it a try and have fun
 
